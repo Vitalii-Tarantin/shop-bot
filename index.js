@@ -4,7 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 
 class RestError extends Error {
-    constructor(message, status = 500) {
+    constructor(message, status = 200) {
         super(message);
         this.status = status;
     }
@@ -66,7 +66,7 @@ app.use(function (err, req, res, next) {
     if (!err.status) {
         console.log(err);
     }
-    res.status(err.status || 500);
+    res.status(err.status || 200);
     res.json({
         error: err.message
     })
